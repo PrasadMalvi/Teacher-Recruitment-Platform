@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+<?php include('meta_tages.php');?>
+  </head>
+  <body class="app sidebar-mini rtl">
+    <!-- Navbar-->
+<?php include('admin_header.php');?>
+    <!-- Sidebar menu-->
+<?php include('admin_side_bar.php');?>
+    <main class="app-content" style="width:fit-content;">
+      <div class="app-title">
+        <div>
+          <h1><i class="fa fa-th-list"></i>JOB SEEKER DETAILS</h1>
+         
+        </div>
+        <ul class="app-breadcrumb breadcrumb side">
+          <li class="breadcrumb-item"><a href="home.php"><i class="fa fa-home fa-lg"></i></a></li>
+         <!-- <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active"><a href="#">Data Table</a></li>-->
+        </ul>
+      </div>
+	 
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-body">
+			<a href="newjsee.php" class="btn btn-primary">New Job Seeker</a></br><br>
+              <table width="114%" border="0" class="table table-hover table-bordered" id="sampleTable">
+                <thead>
+                  <tr>
+<?php
+ include("dbconnect.php");
+ $sql="select * from job_seeker";
+ $res=mysqli_query($conn,$sql);
+ ?>
+ 
+  <table width="1026" border="0" id="rounded-corner">
+    <thead>
+    	<tr>
+    <th width="7%">Job Seeker Id</th>
+    <th width="9%">Name</th>
+ 
+    <th width="7%">DOB</th>
+	
+    <th width="9%">Address</th>
+    <th width="6%">City</th>
+  
+    <th width="7%">Mobile No</th>
+ 
+    <th width="8%">E-Mail Id</th>
+    <th width="8%">Image</th>
+    <th width="3%">Qualification</th>
+    <th width="3%">Experience</th>
+  </tr>
+  </thead>
+        <tfoot>
+    	<tr>
+        	<td colspan="15"></td>
+        </tr>
+    </tfoot>
+    <tbody>
+  <?php
+    while($row=mysqli_fetch_array($res))
+	{
+?>	
+  <tr>
+    <td><?php echo $row["js_id"];?></td>
+    <td><?php echo $row["js_fname"]." ".$row["js_mname"]." ".$row["js_lname"];?></td>
+    <td><?php echo $row["js_dob"];?></td>
+    <td><?php echo $row["js_address"];?></td>
+	<td><?php echo $row["js_city"];?></td>
+    <td><?php echo $row["js_mobile_no"];?></td>
+    <td><?php echo $row["js_e_mail"];?></td>
+    <td>&nbsp;<img src="../photo/<?php echo $row['image'];?>" width="100" height="120"></td>
+    <td><a href="viewquad.php?js_id=<?php echo $row["js_id"];?>"class="btn btn-info">View</a></td>
+    <td><a href="viewexpd.php?js_id=<?php echo $row["js_id"];?>"class="btn btn-info">View</a></td>
+  <?php
+}
+?>
+  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Essential javascripts for application to work-->
+<?php include('script.php');?>
+	<?php include('admin_footer.php'); ?>
+           
+    <div class="sidebar" id="sidebar">
+	<!--Side Bar Start -->
+    
+  <!--Side Bar End -->
+    </div>
+    <div class="clear"></div>
+    </div> <!--end of center_content-->
+        <?php include_once('admin_footer.php');?>
+
+</div>
+
+    	
+</body>
+</html>
+

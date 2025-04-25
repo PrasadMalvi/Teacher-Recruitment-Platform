@@ -1,0 +1,14 @@
+
+.code {
+	background: #ebebeb;
+	border: 1px solid #cccccc;
+	padding: 10px;
+	font-size: 10px;
+	color: #333333;
+}
+
+#wrapper {
+	width: 500px;
+	margin: 20px auto;
+}
+
